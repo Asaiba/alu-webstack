@@ -35,19 +35,19 @@ defaults
 
 
 
-frontend rurangwacodes_frontEnd
+frontend Https_ssl_frontEnd
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
         http-request set-header X_Forwarded-Proto http
-        default_backend rurangwacodes_backEnd
+        default_backend Https_ssl_backEnd
 
-frontend rurangwacodes-frontEnd-https
-        bind *:443 ssl crt /etc/letsencrypt/live/www.rurangwacodes.tech/www.rurangwacodes.tech.pem
+frontend Https_ssl-frontEnd-https
+        bind *:443 ssl crt /etc/letsencrypt/live/www.sabn.tech/www.sabn.tech.pem
         http-request set-header X-Forwarded-Proto https
-        default_backend rurangwacodes_backEnd
+        default_backend Https_ssl_backEnd
 
-backend rurangwacodes_backEnd
+backend Https_ssl_backEnd
     balance roundrobin
-    server web-01 54.89.147.123:80 check
-    server web-02 107.22.129.234:80 check
+    server web-01 3.94.161.162:80 check
+    server web-02 3.88.140.140:80 check
