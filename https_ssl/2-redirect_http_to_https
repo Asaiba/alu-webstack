@@ -35,7 +35,7 @@ defaults
 
 
 
-frontend Https_ssl_frontEnd
+frontend Http_ssl_frontEnd
         bind *:80
         mode http
         http-request redirect scheme https code 301 unless { ssl_fc }
